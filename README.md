@@ -1,2 +1,2 @@
 # Gaminator SQL
-This repository contains Gamiknator SQL files
+This repository contains Gaminator SQL files
