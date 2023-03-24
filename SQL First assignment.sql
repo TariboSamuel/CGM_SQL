@@ -1,0 +1,7 @@
+SELECT *
+FROM 
+SELECT "BRANDS", "COUNTRIES"
+FROM "Brewery_data"
+WHERE NOT "COUNTRIES" = 'Ghana', 'Nigeria'
+ORDER BY "BRANDS"
+LIMIT = 3
