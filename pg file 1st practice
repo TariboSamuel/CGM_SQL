@@ -1,0 +1,60 @@
+select distinct s.id, s.name
+from "sales_rep" s;
+
+select *
+from "orders"
+
+select *
+from "sales_rep";
+
+select *
+from region;
+
+select distinct s.id, 
+from "accounts" a
+join "sales_rep" s
+on s.id = a.sales_rep_id
+join "region" r
+on s.region_id = r.id
+
+
+select a.id, a.name, w.channel, count (*) as "use_of_channel"
+from "accounts" a
+join "web_events" w
+on w.account_id = a.id
+group by a.id, a.name, w.channel
+having count (*) > 6 and "channel" = 'facebook';
+
+
+USING CASE WHEN
+select *,
+case when "poster_qty" = 0  or "poster_qty" is null then 20
+else "standard_amt_usd"/poster_qty" end as "unit_price"
+
+select a.name, sum("total_amt_usd") as "total_spent"
+case when sum("total_amt_usd) > 2000 then 'top'
+when sum("total_amt_usd") > 1000 then 'middle'
+else 'low' end as "customer_level"
+from "accounts" a
+join "orders" o
+on a.id = o.account_id
+group by a.name
+order by "total_spent"''
+
+select *
+from "sales_rep"
+
+class work-17-5-2022
+
+select "s.name", count(s.name)
+case when count(s.name) > 2000 then 'top'
+when count(sales_rep_name) < 2000 then 'bottom'
+else 'very poor' end as sales_rep_level
+from "accounts" a
+join "orders" o
+on a.id = o.id
+join "sales_rep" s
+on a.sales_rep_id = s.id
+group by "s.name"
+order by "sales_rep_level"
+

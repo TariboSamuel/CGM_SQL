@@ -1,0 +1,48 @@
+select s.name, count(*), sum(o.total_amt_usd) as "total_spent",
+case when count (*) > 200 or sum(o.total_amt_usd)>7500 then 'top'
+when count(*) >150
+from, "order" o
+join "accounts" a
+on o.account_id=a.id
+join "sales_rep" s
+on s.id=a.sales_rep_id
+group by s.name
+order by "sales_rep_level"
+
+select distinct "countries"
+from "brewery_data;
+
+SELECT "TERRITORIS", sum("PROFIT") as "TERRITORIAL_PROFIT"
+from
+(select *,
+case when "COUNTRIES" in ('Nigeria', 'Ghana') then 'Anglophone'
+else 'francophone' end as "TERRITORIES"
+from ("brewery_data") as "table_one"
+group by "TERRITORIES";
+
+select "yearly_quarter", sum("PROFIT") as "total_profit"
+from (select *,
+case when "MONTHS" IN ('January', 'February', 'March') then 'first_quarter' 
+ when "MONTHS" IN ('April', 'May', 'June' ) then 'second_quarter'
+ when "MONTHS" IN ('July', 'August', 'September') then 'third_quarter'
+ else  'fourth_quarter' end as "yearly_quarter"
+ from "Brewery_data") as "table_two"
+order by "total_profit" 
+
+ 
+ USING DATE PART
+select *
+from 
+(select date_part('year', "occurred_at") as "ordered_month", count(*)
+from "orders"
+group by 1
+order by 2) as "table_3"
+where "ordered_month" between '2013' and '2015';
+ 
+ CLASSWORK
+ 1) join orders and account where acccount name is walmart. From date part, select only the month and sum the glass amount in usd
+ 2) select the day and count it with the channel from web event
+ solutions;
+ 
+ select *
+ from orders 
